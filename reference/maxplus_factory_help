@@ -1,0 +1,294 @@
+Help on class Factory in module MaxPlus:
+
+class Factory(__builtin__.object)
+ |  Functions for creating objects and nodes.
+ |  
+ |  Methods defined here:
+ |  
+ |  __del__ lambda self
+ |  
+ |  __init__(self, *args, **kwargs)
+ |  
+ |  __repr__ = _swig_repr(self)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  CreateAnimatable(*args)
+ |      CreateAnimatable(SClass_ID sid, Class_ID ci, bool throwOnError) -> Animatable
+ |      CreateAnimatable(SClass_ID sid, Class_ID ci) -> Animatable
+ |  
+ |  CreateAtmospheric(*args)
+ |      CreateAtmospheric(Class_ID ci) -> Atmospheric
+ |  
+ |  CreateBitmap(*args)
+ |      CreateBitmap() -> Bitmap
+ |      CreateBitmap(BitmapInfo bitmapInfo) -> Bitmap
+ |  
+ |  CreateBoxGizmoObject()
+ |      CreateBoxGizmoObject() -> GizmoObject
+ |  
+ |  CreateCamera(*args)
+ |      CreateCamera(Class_ID ci) -> CameraObject
+ |  
+ |  CreateCameraObject(*args)
+ |      CreateCameraObject(int type) -> GenCamera
+ |  
+ |  CreateCylGizmoObject()
+ |      CreateCylGizmoObject() -> GizmoObject
+ |  
+ |  CreateDefaultBitmapTex()
+ |      CreateDefaultBitmapTex() -> BitmapTex
+ |  
+ |  CreateDefaultBoolController()
+ |      CreateDefaultBoolController() -> Control
+ |  
+ |  CreateDefaultColorController()
+ |      CreateDefaultColorController() -> Control
+ |  
+ |  CreateDefaultCompositeTex()
+ |      CreateDefaultCompositeTex() -> Texmap
+ |  
+ |  CreateDefaultFRGBAController()
+ |      CreateDefaultFRGBAController() -> Control
+ |  
+ |  CreateDefaultFloatController()
+ |      CreateDefaultFloatController() -> Control
+ |  
+ |  CreateDefaultMasterPointController()
+ |      CreateDefaultMasterPointController() -> Control
+ |  
+ |  CreateDefaultMatrix3Controller()
+ |      CreateDefaultMatrix3Controller() -> Control
+ |  
+ |  CreateDefaultMixTex()
+ |      CreateDefaultMixTex() -> Texmap
+ |  
+ |  CreateDefaultMultiMtl()
+ |      CreateDefaultMultiMtl() -> MultiMtl
+ |  
+ |  CreateDefaultPoint2Controller()
+ |      CreateDefaultPoint2Controller() -> Control
+ |  
+ |  CreateDefaultPoint3Controller()
+ |      CreateDefaultPoint3Controller() -> Control
+ |  
+ |  CreateDefaultPoint4Controller()
+ |      CreateDefaultPoint4Controller() -> Control
+ |  
+ |  CreateDefaultPositionController()
+ |      CreateDefaultPositionController() -> Control
+ |  
+ |  CreateDefaultRotationController()
+ |      CreateDefaultRotationController() -> Control
+ |  
+ |  CreateDefaultScaleController()
+ |      CreateDefaultScaleController() -> Control
+ |  
+ |  CreateDefaultSoundObj()
+ |      CreateDefaultSoundObj() -> SoundObj
+ |  
+ |  CreateDefaultStdCubic()
+ |      CreateDefaultStdCubic() -> Texmap
+ |  
+ |  CreateDefaultStdFog()
+ |      CreateDefaultStdFog() -> Atmospheric
+ |  
+ |  CreateDefaultStdMat()
+ |      CreateDefaultStdMat() -> StdMat
+ |  
+ |  CreateDefaultStdMirror()
+ |      CreateDefaultStdMirror() -> Texmap
+ |  
+ |  CreateDefaultTintTex()
+ |      CreateDefaultTintTex() -> Texmap
+ |  
+ |  CreateDerivedObject(pob=0)
+ |      CreateDerivedObject(Object pob=0) -> IDerivedObject
+ |      CreateDerivedObject() -> IDerivedObject
+ |  
+ |  CreateDirectionalLight()
+ |      CreateDirectionalLight() -> GenLight
+ |  
+ |  CreateDummyObject()
+ |      CreateDummyObject() -> DummyObject
+ |  
+ |  CreateFloatController(*args)
+ |      CreateFloatController(Class_ID ci) -> Control
+ |  
+ |  CreateFreeCamera()
+ |      CreateFreeCamera() -> GenCamera
+ |  
+ |  CreateGeomObject(*args)
+ |      CreateGeomObject(Class_ID ci) -> GeomObject
+ |  
+ |  CreateGizmoObject(*args)
+ |      CreateGizmoObject(Class_ID ci) -> GizmoObject
+ |  
+ |  CreateHelperObject(*args)
+ |      CreateHelperObject(Class_ID ci) -> HelperObject
+ |  
+ |  CreateInterpFloat()
+ |      CreateInterpFloat() -> Control
+ |  
+ |  CreateInterpPoint2()
+ |      CreateInterpPoint2() -> Control
+ |  
+ |  CreateInterpPoint3()
+ |      CreateInterpPoint3() -> Control
+ |  
+ |  CreateInterpPoint4()
+ |      CreateInterpPoint4() -> Control
+ |  
+ |  CreateInterpPosition()
+ |      CreateInterpPosition() -> Control
+ |  
+ |  CreateInterpRotation()
+ |      CreateInterpRotation() -> Control
+ |  
+ |  CreateInterpScale()
+ |      CreateInterpScale() -> Control
+ |  
+ |  CreateLight(*args)
+ |      CreateLight(Class_ID ci) -> LightObject
+ |  
+ |  CreateLightObject(*args)
+ |      CreateLightObject(int type) -> GenLight
+ |  
+ |  CreateLookatControl()
+ |      CreateLookatControl() -> Control
+ |  
+ |  CreateMasterPointControl()
+ |      CreateMasterPointControl() -> Control
+ |  
+ |  CreateMaterial(*args)
+ |      CreateMaterial(Class_ID ci) -> Mtl
+ |  
+ |  CreateMatrix3Controller(*args)
+ |      CreateMatrix3Controller(Class_ID ci) -> Control
+ |  
+ |  CreateMorphController(*args)
+ |      CreateMorphController(Class_ID ci) -> Control
+ |  
+ |  CreateNewMesh()
+ |      CreateNewMesh() -> Mesh
+ |  
+ |  CreateNewTriObject()
+ |      CreateNewTriObject() -> TriObject
+ |  
+ |  CreateNode(*args)
+ |      CreateNode(Object object) -> INode
+ |      CreateNode(Object object, wchar_t const * name) -> INode
+ |  
+ |  CreateObject(*args)
+ |      CreateObject(SClass_ID sid, Class_ID ci) -> Object
+ |  
+ |  CreateObjectModifier(*args)
+ |      CreateObjectModifier(Class_ID ci) -> Modifier
+ |  
+ |  CreateOmniLight()
+ |      CreateOmniLight() -> GenLight
+ |  
+ |  CreatePRSControl()
+ |      CreatePRSControl() -> Control
+ |  
+ |  CreateParallelCamera()
+ |      CreateParallelCamera() -> GenCamera
+ |  
+ |  CreatePoint3Controller(*args)
+ |      CreatePoint3Controller(Class_ID ci) -> Control
+ |  
+ |  CreatePositionController(*args)
+ |      CreatePositionController(Class_ID ci) -> Control
+ |  
+ |  CreateRenderElement(*args)
+ |      CreateRenderElement(Class_ID ci) -> RenderElement
+ |  
+ |  CreateRenderer(*args)
+ |      CreateRenderer(Class_ID ci) -> Renderer
+ |  
+ |  CreateRenderingEffect(*args)
+ |      CreateRenderingEffect(Class_ID ci) -> Effect
+ |  
+ |  CreateRotationController(*args)
+ |      CreateRotationController(Class_ID ci) -> Control
+ |  
+ |  CreateScaleController(*args)
+ |      CreateScaleController(Class_ID ci) -> Control
+ |  
+ |  CreateShapeObject(*args)
+ |      CreateShapeObject(Class_ID ci) -> ShapeObject
+ |  
+ |  CreateSound(*args)
+ |      CreateSound(Class_ID ci) -> SoundObj
+ |  
+ |  CreateSphereGizmoObject()
+ |      CreateSphereGizmoObject() -> GizmoObject
+ |  
+ |  CreateStorage(*args)
+ |      CreateStorage(UINT type) -> BitmapStorage
+ |  
+ |  CreateTargetObject()
+ |      CreateTargetObject() -> Object
+ |  
+ |  CreateTargetedCamera()
+ |      CreateTargetedCamera() -> GenCamera
+ |  
+ |  CreateTargetedDirectionalLight(*args)
+ |      CreateTargetedDirectionalLight(INode target) -> GenLight
+ |  
+ |  CreateTargetedSpotLight()
+ |      CreateTargetedSpotLight() -> GenLight
+ |  
+ |  CreateTextureMap(*args)
+ |      CreateTextureMap(Class_ID ci) -> Texmap
+ |  
+ |  CreateWSDerivedObject(pob=0)
+ |      CreateWSDerivedObject(Object pob=0) -> IDerivedObject
+ |      CreateWSDerivedObject() -> IDerivedObject
+ |  
+ |  CreateWorldSpaceModifier(*args)
+ |      CreateWorldSpaceModifier(Class_ID ci) -> Modifier
+ |  
+ |  GetDefaultController(*args)
+ |      GetDefaultController(SClass_ID sid) -> ClassDesc
+ |  
+ |  IsCreatingObject(*args)
+ |      IsCreatingObject(Class_ID id) -> bool
+ |      IsCreatingObject() -> bool
+ |  
+ |  SetDefaultBoolController(*args)
+ |      SetDefaultBoolController(ClassDesc desc)
+ |  
+ |  SetDefaultColorController(*args)
+ |      SetDefaultColorController(ClassDesc desc)
+ |  
+ |  SetDefaultController(*args)
+ |      SetDefaultController(SClass_ID sid, ClassDesc desc)
+ |  
+ |  SetDefaultFRGBAController(*args)
+ |      SetDefaultFRGBAController(ClassDesc desc)
+ |  
+ |  StartCreatingObject(*args)
+ |      StartCreatingObject(ClassDesc cd)
+ |  
+ |  StopCreating()
+ |      StopCreating()
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  thisown
+ |      The membership flag
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __swig_destroy__ = <built-in function delete_Factory>
+ |      delete_Factory(Factory self)

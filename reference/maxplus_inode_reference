@@ -1,0 +1,1416 @@
+class INode(ReferenceTarget)
+ |  The interface to scene graph nodes. In addition to pointers to its a parent and children, a node contains references to the material and object and maintains information about its translation, rotation, and scale in 3D space.
+ |  
+ |  Method resolution order:
+ |      INode
+ |      ReferenceTarget
+ |      ReferenceMaker
+ |      Animatable
+ |      InterfaceServer
+ |      Wrapper
+ |      __builtin__.object
+ |  
+ |  Methods defined here:
+ |  
+ |  AddModifier(self, *args)
+ |      AddModifier(INode self, Modifier m) -> Autodesk::Max::ResCode::Type
+ |  
+ |  AddNewXRefFile(self, *args)
+ |      AddNewXRefFile(INode self, Asset file, bool loadNow=True, bool hideInManagerUI=False) -> bool
+ |      AddNewXRefFile(INode self, Asset file, bool loadNow=True) -> bool
+ |      AddNewXRefFile(INode self, Asset file) -> bool
+ |  
+ |  AlignPivot(self, *args)
+ |      AlignPivot(INode self, TimeValue t, bool moveObject)
+ |  
+ |  AlignToParent(self, *args)
+ |      AlignToParent(INode self, TimeValue t)
+ |  
+ |  AlignToWorld(self, *args)
+ |      AlignToWorld(INode self, TimeValue t)
+ |  
+ |  AttachChild(self, *args)
+ |      AttachChild(INode self, INode node, int keepTM=1)
+ |      AttachChild(INode self, INode node)
+ |  
+ |  BindToTarget(self, *args)
+ |      BindToTarget(INode self, INode targNode) -> bool
+ |  
+ |  BindXRefFile(self, *args)
+ |      BindXRefFile(INode self, int i) -> bool
+ |  
+ |  BoneAsLine(self, *args)
+ |      BoneAsLine(INode self, bool onOff)
+ |  
+ |  CenterPivot(self, *args)
+ |      CenterPivot(INode self, TimeValue t, bool moveObject)
+ |  
+ |  Collapse(self, noWarning=False)
+ |      Collapse(INode self, bool noWarning=False)
+ |      Collapse(INode self)
+ |  
+ |  CollapseTo(self, *args)
+ |      CollapseTo(INode self, int modIndex, bool noWarning=False) -> bool
+ |      CollapseTo(INode self, int modIndex) -> bool
+ |  
+ |  Convert(self, *args)
+ |      Convert(INode self, Class_ID cid) -> bool
+ |  
+ |  CopyProperties(self, *args)
+ |      CopyProperties(INode self, INode other)
+ |  
+ |  CreateCopy(self)
+ |      CreateCopy(INode self) -> INode
+ |  
+ |  CreateInstance(self)
+ |      CreateInstance(INode self) -> INode
+ |  
+ |  CreateReference(self)
+ |      CreateReference(INode self) -> INode
+ |  
+ |  CreateTreeCopy(self)
+ |      CreateTreeCopy(INode self) -> INode
+ |  
+ |  CreateTreeInstance(self)
+ |      CreateTreeInstance(INode self) -> INode
+ |  
+ |  CreateTreeReference(self)
+ |      CreateTreeReference(INode self) -> INode
+ |  
+ |  Delete(self, *args)
+ |      Delete(INode self, TimeValue t=Autodesk::Max::Now(), int keepChildPosition=False)
+ |      Delete(INode self, TimeValue t=Autodesk::Max::Now())
+ |      Delete(INode self)
+ |  
+ |  DeleteAllXRefs(self)
+ |      DeleteAllXRefs(INode self)
+ |  
+ |  DeleteModifier(self, *args)
+ |      DeleteModifier(INode self, int n) -> Autodesk::Max::ResCode::Type
+ |  
+ |  DeleteXRefFile(self, *args)
+ |      DeleteXRefFile(INode self, int i) -> bool
+ |  
+ |  Deselect(self)
+ |      Deselect(INode self)
+ |  
+ |  Detach(self, *args)
+ |      Detach(INode self, TimeValue t=Autodesk::Max::Now(), int keepTM=1)
+ |      Detach(INode self, TimeValue t=Autodesk::Max::Now())
+ |      Detach(INode self)
+ |  
+ |  DisposeTemporary(self)
+ |      DisposeTemporary(INode self)
+ |  
+ |  EvalWorldState(self, *args)
+ |      EvalWorldState(INode self, TimeValue time=Autodesk::Max::Now(), bool evalHidden=True) -> ObjectState
+ |      EvalWorldState(INode self, TimeValue time=Autodesk::Max::Now()) -> ObjectState
+ |      EvalWorldState(INode self) -> ObjectState
+ |  
+ |  FlagForeground(self, *args)
+ |      FlagForeground(INode self, TimeValue t, bool notify=True)
+ |      FlagForeground(INode self, TimeValue t)
+ |  
+ |  FlagXrefChanged(self, *args)
+ |      FlagXrefChanged(INode self, int i)
+ |  
+ |  GetActualINode(self)
+ |      GetActualINode(INode self) -> INode
+ |  
+ |  GetAllEdges(self)
+ |      GetAllEdges(INode self) -> bool
+ |  
+ |  GetApplyAtmospherics(self)
+ |      GetApplyAtmospherics(INode self) -> bool
+ |  
+ |  GetAssemblyBBoxDisplay(self)
+ |      GetAssemblyBBoxDisplay(INode self) -> bool
+ |  
+ |  GetBackCull(self)
+ |      GetBackCull(INode self) -> bool
+ |  
+ |  GetBaseObject(self)
+ |      GetBaseObject(INode self) -> Object
+ |  
+ |  GetBoneAutoAlign(self)
+ |      GetBoneAutoAlign(INode self) -> bool
+ |  
+ |  GetBoneAxis(self)
+ |      GetBoneAxis(INode self) -> int
+ |  
+ |  GetBoneAxisFlip(self)
+ |      GetBoneAxisFlip(INode self) -> bool
+ |  
+ |  GetBoneFreezeLen(self)
+ |      GetBoneFreezeLen(INode self) -> bool
+ |  
+ |  GetBoneNodeOnOff(self)
+ |      GetBoneNodeOnOff(INode self) -> bool
+ |  
+ |  GetBoneNodeOnOff_T(self, *args)
+ |      GetBoneNodeOnOff_T(INode self, TimeValue t) -> bool
+ |  
+ |  GetBoneScaleType(self)
+ |      GetBoneScaleType(INode self) -> int
+ |  
+ |  GetBoxMode(self)
+ |      GetBoxMode(INode self) -> bool
+ |  
+ |  GetCastShadows(self)
+ |      GetCastShadows(INode self) -> bool
+ |  
+ |  GetChild(self, *args)
+ |      GetChild(INode self, int i) -> INode
+ |  
+ |  GetDerivedObject(self)
+ |      GetDerivedObject(INode self) -> IDerivedObject
+ |  
+ |  GetDesc(self)
+ |      GetDesc(INode self) -> FPInterfaceDesc
+ |  
+ |  GetDisplayByLayer(self)
+ |      GetDisplayByLayer(INode self) -> bool
+ |  
+ |  GetFaceCount(self, *args)
+ |      GetFaceCount(INode self, TimeValue t=Autodesk::Max::Now()) -> int
+ |      GetFaceCount(INode self) -> int
+ |  
+ |  GetGBufID(self)
+ |      GetGBufID(INode self) -> ULONG
+ |  
+ |  GetGenerateCaustics(self)
+ |      GetGenerateCaustics(INode self) -> bool
+ |  
+ |  GetGenerateGlobalIllum(self)
+ |      GetGenerateGlobalIllum(INode self) -> bool
+ |  
+ |  GetHandle(self)
+ |      GetHandle(INode self) -> ULONG
+ |  
+ |  GetIgnoreExtents(self)
+ |      GetIgnoreExtents(INode self) -> bool
+ |  
+ |  GetImageBlurMultiplier(self, *args)
+ |      GetImageBlurMultiplier(INode self, TimeValue t=Autodesk::Max::Now()) -> float
+ |      GetImageBlurMultiplier(INode self) -> float
+ |  
+ |  GetInheritVisibility(self)
+ |      GetInheritVisibility(INode self) -> bool
+ |  
+ |  GetIsRoot(self)
+ |      GetIsRoot(INode self) -> bool
+ |  
+ |  GetLayer(self)
+ |      GetLayer(INode self) -> Layer
+ |  
+ |  GetLayerName(self)
+ |      GetLayerName(INode self) -> TCHAR const *
+ |  
+ |  GetLocalPosition(self, *args)
+ |      GetLocalPosition(INode self, TimeValue t=Autodesk::Max::Now()) -> Point3
+ |      GetLocalPosition(INode self) -> Point3
+ |  
+ |  GetLocalRotation(self, *args)
+ |      GetLocalRotation(INode self, TimeValue t=Autodesk::Max::Now()) -> Quat
+ |      GetLocalRotation(INode self) -> Quat
+ |  
+ |  GetLocalScale(self, *args)
+ |      GetLocalScale(INode self, TimeValue t=Autodesk::Max::Now()) -> Point3
+ |      GetLocalScale(INode self) -> Point3
+ |  
+ |  GetLocalTM(self, *args)
+ |      GetLocalTM(INode self, TimeValue t=Autodesk::Max::Now()) -> Matrix3
+ |      GetLocalTM(INode self) -> Matrix3
+ |  
+ |  GetLookatNode(self)
+ |      GetLookatNode(INode self) -> INode
+ |  
+ |  GetMaterial(self)
+ |      GetMaterial(INode self) -> Mtl
+ |  
+ |  GetModifier(self, *args)
+ |      GetModifier(INode self, int n) -> Modifier
+ |  
+ |  GetMotionBlurOnOff(self)
+ |      GetMotionBlurOnOff(INode self) -> bool
+ |  
+ |  GetMotionBlurType(self)
+ |      GetMotionBlurType(INode self) -> int
+ |  
+ |  GetMotionByLayer(self)
+ |      GetMotionByLayer(INode self) -> bool
+ |  
+ |  GetName(self)
+ |      GetName(INode self) -> wchar_t const *
+ |  
+ |  GetNeverDegrade(self)
+ |      GetNeverDegrade(INode self) -> bool
+ |  
+ |  GetNumChildren(self)
+ |      GetNumChildren(INode self) -> int
+ |  
+ |  GetNumModifiers(self)
+ |      GetNumModifiers(INode self) -> int
+ |  
+ |  GetObjOffsetPosition(self)
+ |      GetObjOffsetPosition(INode self) -> Point3
+ |  
+ |  GetObjOffsetRotation(self)
+ |      GetObjOffsetRotation(INode self) -> Quat
+ |  
+ |  GetObjOffsetScale(self)
+ |      GetObjOffsetScale(INode self) -> ScaleValue
+ |  
+ |  GetObjOrWSMRef(self)
+ |      GetObjOrWSMRef(INode self) -> Object
+ |  
+ |  GetObjTMAfterWSM(self, *args)
+ |      GetObjTMAfterWSM(INode self, TimeValue time) -> Matrix3
+ |  
+ |  GetObjTMBeforeWSM(self, *args)
+ |      GetObjTMBeforeWSM(INode self, TimeValue time) -> Matrix3
+ |  
+ |  GetObject(self)
+ |      GetObject(INode self) -> Object
+ |  
+ |  GetObjectRef(self)
+ |      GetObjectRef(INode self) -> Object
+ |  
+ |  GetObjectTM(self, *args)
+ |      GetObjectTM(INode self, TimeValue time) -> Matrix3
+ |  
+ |  GetParent(self)
+ |      GetParent(INode self) -> INode
+ |  
+ |  GetParentTM(self, *args)
+ |      GetParentTM(INode self, TimeValue t=Autodesk::Max::Now()) -> Matrix3
+ |      GetParentTM(INode self) -> Matrix3
+ |  
+ |  GetPositionTaskWeight(self)
+ |      GetPositionTaskWeight(INode self) -> float
+ |  
+ |  GetPositionX(self, *args)
+ |      GetPositionX(INode self, TimeValue t=Autodesk::Max::Now()) -> float
+ |      GetPositionX(INode self) -> float
+ |  
+ |  GetPositionY(self, *args)
+ |      GetPositionY(INode self, TimeValue t=Autodesk::Max::Now()) -> float
+ |      GetPositionY(INode self) -> float
+ |  
+ |  GetPositionZ(self, *args)
+ |      GetPositionZ(INode self, TimeValue t=Autodesk::Max::Now()) -> float
+ |      GetPositionZ(INode self) -> float
+ |  
+ |  GetPrimaryVisibility(self)
+ |      GetPrimaryVisibility(INode self) -> bool
+ |  
+ |  GetReceiveCaustics(self)
+ |      GetReceiveCaustics(INode self) -> bool
+ |  
+ |  GetReceiveGlobalIllum(self)
+ |      GetReceiveGlobalIllum(INode self) -> bool
+ |  
+ |  GetReceiveShadows(self)
+ |      GetReceiveShadows(INode self) -> bool
+ |  
+ |  GetRenderByLayer(self)
+ |      GetRenderByLayer(INode self) -> bool
+ |  
+ |  GetRenderOccluded(self)
+ |      GetRenderOccluded(INode self) -> bool
+ |  
+ |  GetRenderable(self)
+ |      GetRenderable(INode self) -> bool
+ |  
+ |  GetRotationTaskWeight(self)
+ |      GetRotationTaskWeight(INode self) -> float
+ |  
+ |  GetSecondaryVisibility(self)
+ |      GetSecondaryVisibility(INode self) -> bool
+ |  
+ |  GetSeeThrough(self)
+ |      GetSeeThrough(INode self) -> bool
+ |  
+ |  GetSeeThroughObject(self)
+ |      GetSeeThroughObject(INode self) -> bool
+ |  
+ |  GetSelected(self)
+ |      GetSelected(INode self) -> bool
+ |  
+ |  GetShadeVertexColors(self)
+ |      GetShadeVertexColors(INode self) -> bool
+ |  
+ |  GetShowFrozenWithMtl(self)
+ |      GetShowFrozenWithMtl(INode self) -> bool
+ |  
+ |  GetStretchTM(self, *args)
+ |      GetStretchTM(INode self, TimeValue t) -> Matrix3
+ |  
+ |  GetTMController(self)
+ |      GetTMController(INode self) -> Control
+ |  
+ |  GetTarget(self)
+ |      GetTarget(INode self) -> INode
+ |  
+ |  GetTargetNodePair(self)
+ |      GetTargetNodePair(INode self) -> bool
+ |  
+ |  GetTargetTM(self, *args)
+ |      GetTargetTM(INode self, TimeValue t, Matrix3 m) -> bool
+ |  
+ |  GetTaskAxisState(self, *args)
+ |      GetTaskAxisState(INode self, int which, int axis) -> bool
+ |  
+ |  GetTaskAxisStateBits(self)
+ |      GetTaskAxisStateBits(INode self) -> DWORD
+ |  
+ |  GetTrajectoryON(self)
+ |      GetTrajectoryON(INode self) -> bool
+ |  
+ |  GetTransformLock(self, *args)
+ |      GetTransformLock(INode self, int type, int axis) -> bool
+ |  
+ |  GetUserPropBuffer(self, *args)
+ |      GetUserPropBuffer(INode self, WStr buf)
+ |  
+ |  GetVertTicks(self)
+ |      GetVertTicks(INode self) -> bool
+ |  
+ |  GetVertexColorMapChannel(self)
+ |      GetVertexColorMapChannel(INode self) -> int
+ |  
+ |  GetVertexColorMode(self)
+ |      GetVertexColorMode(INode self) -> bool
+ |  
+ |  GetVertexColorType(self)
+ |      GetVertexColorType(INode self) -> int
+ |  
+ |  GetVertexCount(self, *args)
+ |      GetVertexCount(INode self, TimeValue t=Autodesk::Max::Now()) -> int
+ |      GetVertexCount(INode self) -> int
+ |  
+ |  GetVisibility(self, *args)
+ |      GetVisibility(INode self, TimeValue t=Autodesk::Max::Now()) -> float
+ |      GetVisibility(INode self) -> float
+ |  
+ |  GetVisibilityController(self)
+ |      GetVisibilityController(INode self) -> Control
+ |  
+ |  GetWireColor(self)
+ |      GetWireColor(INode self) -> Color
+ |  
+ |  GetWorldPosition(self, *args)
+ |      GetWorldPosition(INode self, TimeValue t=Autodesk::Max::Now()) -> Point3
+ |      GetWorldPosition(INode self) -> Point3
+ |  
+ |  GetWorldRotation(self, *args)
+ |      GetWorldRotation(INode self, TimeValue t=Autodesk::Max::Now()) -> Quat
+ |      GetWorldRotation(INode self) -> Quat
+ |  
+ |  GetWorldScale(self, *args)
+ |      GetWorldScale(INode self, TimeValue t=Autodesk::Max::Now()) -> Point3
+ |      GetWorldScale(INode self) -> Point3
+ |  
+ |  GetWorldTM(self, *args)
+ |      GetWorldTM(INode self, TimeValue t=Autodesk::Max::Now()) -> Matrix3
+ |      GetWorldTM(INode self) -> Matrix3
+ |  
+ |  GetXRefFile(self, *args)
+ |      GetXRefFile(INode self, int i) -> Asset
+ |  
+ |  GetXRefFileCount(self)
+ |      GetXRefFileCount(INode self) -> int
+ |  
+ |  GetXRefFlags(self, *args)
+ |      GetXRefFlags(INode self, int i) -> DWORD
+ |  
+ |  GetXRefParent(self, *args)
+ |      GetXRefParent(INode self, int i) -> INode
+ |  
+ |  GetXRefTree(self, *args)
+ |      GetXRefTree(INode self, int i) -> INode
+ |  
+ |  InsertModifier(self, *args)
+ |      InsertModifier(INode self, Modifier m, int n) -> Autodesk::Max::ResCode::Type
+ |  
+ |  InvalidateObjectCache(self)
+ |      InvalidateObjectCache(INode self)
+ |  
+ |  InvalidateRect(self, *args)
+ |      InvalidateRect(INode self, TimeValue t, bool oldRect=False)
+ |      InvalidateRect(INode self, TimeValue t)
+ |  
+ |  InvalidateTM(self)
+ |      InvalidateTM(INode self)
+ |  
+ |  InvalidateTreeTM(self)
+ |      InvalidateTreeTM(INode self)
+ |  
+ |  InvalidateWS(self)
+ |      InvalidateWS(INode self)
+ |  
+ |  IsActiveGrid(self)
+ |      IsActiveGrid(INode self) -> bool
+ |  
+ |  IsAssemblyHead(self)
+ |      IsAssemblyHead(INode self) -> bool
+ |  
+ |  IsAssemblyHeadMemberOf(self, *args)
+ |      IsAssemblyHeadMemberOf(INode self, INode asmHeadNode) -> bool
+ |  
+ |  IsAssemblyHeadOpen(self)
+ |      IsAssemblyHeadOpen(INode self) -> bool
+ |  
+ |  IsAssemblyMember(self)
+ |      IsAssemblyMember(INode self) -> bool
+ |  
+ |  IsAssemblyMemberOpen(self)
+ |      IsAssemblyMemberOpen(INode self) -> bool
+ |  
+ |  IsBoneOnly(self)
+ |      IsBoneOnly(INode self) -> bool
+ |  
+ |  IsBoneShowing(self)
+ |      IsBoneShowing(INode self) -> bool
+ |  
+ |  IsDependent(self)
+ |      IsDependent(INode self) -> bool
+ |  
+ |  IsFrozen(self)
+ |      IsFrozen(INode self) -> bool
+ |  
+ |  IsGroupHead(self)
+ |      IsGroupHead(INode self) -> bool
+ |  
+ |  IsGroupMember(self)
+ |      IsGroupMember(INode self) -> bool
+ |  
+ |  IsHidden(self, hflags=0, forRenderer=False)
+ |      IsHidden(INode self, DWORD hflags=0, bool forRenderer=False) -> bool
+ |      IsHidden(INode self, DWORD hflags=0) -> bool
+ |      IsHidden(INode self) -> bool
+ |  
+ |  IsNodeHidden(self, forRenderer=False)
+ |      IsNodeHidden(INode self, bool forRenderer=False) -> bool
+ |      IsNodeHidden(INode self) -> bool
+ |  
+ |  IsObjectFrozen(self)
+ |      IsObjectFrozen(INode self) -> bool
+ |  
+ |  IsObjectHidden(self)
+ |      IsObjectHidden(INode self) -> bool
+ |  
+ |  IsOpenGroupHead(self)
+ |      IsOpenGroupHead(INode self) -> bool
+ |  
+ |  IsOpenGroupMember(self)
+ |      IsOpenGroupMember(INode self) -> bool
+ |  
+ |  IsSceneXRef(self)
+ |      IsSceneXRef(INode self) -> bool
+ |  
+ |  IsTarget(self)
+ |      IsTarget(INode self) -> bool
+ |  
+ |  MayResetTransform(self)
+ |      MayResetTransform(INode self) -> bool
+ |  
+ |  Move(self, *args)
+ |      Move(INode self, Point3 val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True, Autodesk::Max::PivotMode::Type pivMode=NoPivot, 
+ |          bool ignoreLocks=False)
+ |      Move(INode self, Point3 val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True, Autodesk::Max::PivotMode::Type pivMode=NoPivot)
+ |      Move(INode self, Point3 val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True)
+ |      Move(INode self, Point3 val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False)
+ |      Move(INode self, Point3 val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity())
+ |      Move(INode self, Point3 val, TimeValue t=Autodesk::Max::Now())
+ |      Move(INode self, Point3 val)
+ |  
+ |  RealignBoneToChild(self, *args)
+ |      RealignBoneToChild(INode self, TimeValue t)
+ |  
+ |  ReloadXRef(self, *args)
+ |      ReloadXRef(INode self, int i) -> bool
+ |  
+ |  ResetBoneStretch(self, *args)
+ |      ResetBoneStretch(INode self, TimeValue t)
+ |  
+ |  ResetPivot(self, *args)
+ |      ResetPivot(INode self, TimeValue t)
+ |  
+ |  ResetTransform(self, *args)
+ |      ResetTransform(INode self, TimeValue t, bool scaleOnly)
+ |  
+ |  Rotate(self, *args)
+ |      Rotate(INode self, Quat val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True, Autodesk::Max::PivotMode::Type pivMode=NoPivot, 
+ |          bool ignoreLocks=False)
+ |      Rotate(INode self, Quat val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True, Autodesk::Max::PivotMode::Type pivMode=NoPivot)
+ |      Rotate(INode self, Quat val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True)
+ |      Rotate(INode self, Quat val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False)
+ |      Rotate(INode self, Quat val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity())
+ |      Rotate(INode self, Quat val, TimeValue t=Autodesk::Max::Now())
+ |      Rotate(INode self, Quat val)
+ |      Rotate(INode self, AngAxis val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True, Autodesk::Max::PivotMode::Type pivMode=NoPivot, 
+ |          bool ignoreLocks=False)
+ |      Rotate(INode self, AngAxis val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True, Autodesk::Max::PivotMode::Type pivMode=NoPivot)
+ |      Rotate(INode self, AngAxis val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True)
+ |      Rotate(INode self, AngAxis val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False)
+ |      Rotate(INode self, AngAxis val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity())
+ |      Rotate(INode self, AngAxis val, TimeValue t=Autodesk::Max::Now())
+ |      Rotate(INode self, AngAxis val)
+ |  
+ |  Scale(self, *args)
+ |      Scale(INode self, Point3 val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True, Autodesk::Max::PivotMode::Type pivMode=NoPivot, 
+ |          bool ignoreLocks=False)
+ |      Scale(INode self, Point3 val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True, Autodesk::Max::PivotMode::Type pivMode=NoPivot)
+ |      Scale(INode self, Point3 val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False, bool affectKids=True)
+ |      Scale(INode self, Point3 val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity(), 
+ |          bool localOrigin=False)
+ |      Scale(INode self, Point3 val, TimeValue t=Autodesk::Max::Now(), Matrix3 tmAxis=Autodesk::Max::Identity())
+ |      Scale(INode self, Point3 val, TimeValue t=Autodesk::Max::Now())
+ |      Scale(INode self, Point3 val)
+ |  
+ |  Select(self, replaceSelection=False)
+ |      Select(INode self, bool replaceSelection=False)
+ |      Select(INode self)
+ |  
+ |  SetAllEdges(self, *args)
+ |      SetAllEdges(INode self, bool onOff)
+ |  
+ |  SetApplyAtmospherics(self, *args)
+ |      SetApplyAtmospherics(INode self, bool onOff)
+ |  
+ |  SetAssemblyBBoxDisplay(self, *args)
+ |      SetAssemblyBBoxDisplay(INode self, bool b)
+ |  
+ |  SetAssemblyHead(self, *args)
+ |      SetAssemblyHead(INode self, bool b)
+ |  
+ |  SetAssemblyHeadOpen(self, *args)
+ |      SetAssemblyHeadOpen(INode self, bool b)
+ |  
+ |  SetAssemblyMember(self, *args)
+ |      SetAssemblyMember(INode self, bool b)
+ |  
+ |  SetAssemblyMemberOpen(self, *args)
+ |      SetAssemblyMemberOpen(INode self, bool b)
+ |  
+ |  SetBackCull(self, *args)
+ |      SetBackCull(INode self, bool onOff)
+ |  
+ |  SetBaseObject(self, *args)
+ |      SetBaseObject(INode self, Object obj)
+ |  
+ |  SetBoneAutoAlign(self, *args)
+ |      SetBoneAutoAlign(INode self, bool onOff)
+ |  
+ |  SetBoneAxis(self, *args)
+ |      SetBoneAxis(INode self, int which)
+ |  
+ |  SetBoneAxisFlip(self, *args)
+ |      SetBoneAxisFlip(INode self, bool onOff)
+ |  
+ |  SetBoneFreezeLen(self, *args)
+ |      SetBoneFreezeLen(INode self, bool onOff)
+ |  
+ |  SetBoneNodeOnOff(self, *args)
+ |      SetBoneNodeOnOff(INode self, bool onOff, TimeValue t)
+ |  
+ |  SetBoneScaleType(self, *args)
+ |      SetBoneScaleType(INode self, int which)
+ |  
+ |  SetBoxMode(self, *args)
+ |      SetBoxMode(INode self, bool onOff)
+ |  
+ |  SetCastShadows(self, *args)
+ |      SetCastShadows(INode self, bool onOff)
+ |  
+ |  SetDisplayByLayer(self, *args)
+ |      SetDisplayByLayer(INode self, bool onOff)
+ |  
+ |  SetGBufID(self, *args)
+ |      SetGBufID(INode self, ULONG id)
+ |  
+ |  SetGenerateCaustics(self, *args)
+ |      SetGenerateCaustics(INode self, bool onOff)
+ |  
+ |  SetGenerateGlobalIllum(self, *args)
+ |      SetGenerateGlobalIllum(INode self, bool onOff)
+ |  
+ |  SetGroupHead(self, *args)
+ |      SetGroupHead(INode self, bool b)
+ |  
+ |  SetGroupHeadOpen(self, *args)
+ |      SetGroupHeadOpen(INode self, bool b)
+ |  
+ |  SetGroupMember(self, *args)
+ |      SetGroupMember(INode self, bool b)
+ |  
+ |  SetGroupMemberOpen(self, *args)
+ |      SetGroupMemberOpen(INode self, bool b)
+ |  
+ |  SetIgnoreExtents(self, *args)
+ |      SetIgnoreExtents(INode self, bool onOff)
+ |  
+ |  SetImageBlurMultiplier(self, *args)
+ |      SetImageBlurMultiplier(INode self, float m, TimeValue t=Autodesk::Max::Now())
+ |      SetImageBlurMultiplier(INode self, float m)
+ |  
+ |  SetInheritVisibility(self, *args)
+ |      SetInheritVisibility(INode self, bool onOff)
+ |  
+ |  SetIsTarget(self, *args)
+ |      SetIsTarget(INode self, bool b)
+ |  
+ |  SetLocalPosition(self, *args)
+ |      SetLocalPosition(INode self, Point3 val, TimeValue t=Autodesk::Max::Now())
+ |      SetLocalPosition(INode self, Point3 val)
+ |  
+ |  SetLocalRotation(self, *args)
+ |      SetLocalRotation(INode self, Quat val, TimeValue t=Autodesk::Max::Now())
+ |      SetLocalRotation(INode self, Quat val)
+ |  
+ |  SetLocalScale(self, *args)
+ |      SetLocalScale(INode self, Point3 val, TimeValue t=Autodesk::Max::Now())
+ |      SetLocalScale(INode self, Point3 val)
+ |  
+ |  SetLocalTM(self, *args)
+ |      SetLocalTM(INode self, Matrix3 val, TimeValue t=Autodesk::Max::Now())
+ |      SetLocalTM(INode self, Matrix3 val)
+ |  
+ |  SetMaterial(self, *args)
+ |      SetMaterial(INode self, Mtl matl)
+ |  
+ |  SetMotionBlurOnOff(self, *args)
+ |      SetMotionBlurOnOff(INode self, bool onOff)
+ |  
+ |  SetMotionBlurType(self, *args)
+ |      SetMotionBlurType(INode self, int kind)
+ |  
+ |  SetMotionByLayer(self, *args)
+ |      SetMotionByLayer(INode self, bool onOff)
+ |  
+ |  SetName(self, *args)
+ |      SetName(INode self, wchar_t const * s)
+ |  
+ |  SetNeverDegrade(self, *args)
+ |      SetNeverDegrade(INode self, bool onOff)
+ |  
+ |  SetNodeTMRelConstPlane(self, *args)
+ |      SetNodeTMRelConstPlane(INode self, Matrix3 mat)
+ |  
+ |  SetObjOffsetPosition(self, *args)
+ |      SetObjOffsetPosition(INode self, Point3 p)
+ |  
+ |  SetObjOffsetRotation(self, *args)
+ |      SetObjOffsetRotation(INode self, Quat q)
+ |  
+ |  SetObjOffsetScale(self, *args)
+ |      SetObjOffsetScale(INode self, ScaleValue sv)
+ |  
+ |  SetObject(self, *args)
+ |      SetObject(INode self, Object obj)
+ |  
+ |  SetObjectRef(self, *args)
+ |      SetObjectRef(INode self, Object o)
+ |  
+ |  SetParent(self, *args)
+ |      SetParent(INode self, INode node, TimeValue t=Autodesk::Max::Now())
+ |      SetParent(INode self, INode node)
+ |  
+ |  SetPositionTaskWeight(self, *args)
+ |      SetPositionTaskWeight(INode self, float w)
+ |  
+ |  SetPositionX(self, *args)
+ |      SetPositionX(INode self, float x, TimeValue t=Autodesk::Max::Now())
+ |      SetPositionX(INode self, float x)
+ |  
+ |  SetPositionY(self, *args)
+ |      SetPositionY(INode self, float y, TimeValue t=Autodesk::Max::Now())
+ |      SetPositionY(INode self, float y)
+ |  
+ |  SetPositionZ(self, *args)
+ |      SetPositionZ(INode self, float z, TimeValue t=Autodesk::Max::Now())
+ |      SetPositionZ(INode self, float z)
+ |  
+ |  SetPrimaryVisibility(self, *args)
+ |      SetPrimaryVisibility(INode self, bool onOff)
+ |  
+ |  SetReceiveCaustics(self, *args)
+ |      SetReceiveCaustics(INode self, bool onOff)
+ |  
+ |  SetReceiveGlobalIllum(self, *args)
+ |      SetReceiveGlobalIllum(INode self, bool onOff)
+ |  
+ |  SetReceiveShadows(self, *args)
+ |      SetReceiveShadows(INode self, bool onOff)
+ |  
+ |  SetRenderByLayer(self, *args)
+ |      SetRenderByLayer(INode self, bool onOff)
+ |  
+ |  SetRenderOccluded(self, *args)
+ |      SetRenderOccluded(INode self, bool onOff)
+ |  
+ |  SetRenderable(self, *args)
+ |      SetRenderable(INode self, bool onOff)
+ |  
+ |  SetRotationTaskWeight(self, *args)
+ |      SetRotationTaskWeight(INode self, float w)
+ |  
+ |  SetSecondaryVisibility(self, *args)
+ |      SetSecondaryVisibility(INode self, bool onOff)
+ |  
+ |  SetSeeThrough(self, *args)
+ |      SetSeeThrough(INode self, bool onOff)
+ |  
+ |  SetShadeVertexColors(self, *args)
+ |      SetShadeVertexColors(INode self, bool onOff)
+ |  
+ |  SetShowFrozenWithMtl(self, *args)
+ |      SetShowFrozenWithMtl(INode self, bool onOff)
+ |  
+ |  SetTMController(self, *args)
+ |      SetTMController(INode self, Control m3cont) -> bool
+ |  
+ |  SetTargetNodePair(self, *args)
+ |      SetTargetNodePair(INode self, bool onOff)
+ |  
+ |  SetTaskAxisState(self, *args)
+ |      SetTaskAxisState(INode self, int which, int axis, bool onOff)
+ |  
+ |  SetTrajectoryON(self, *args)
+ |      SetTrajectoryON(INode self, bool onOff)
+ |  
+ |  SetTransformLock(self, *args)
+ |      SetTransformLock(INode self, int type, int axis, bool onOff)
+ |  
+ |  SetUserPropBuffer(self, *args)
+ |      SetUserPropBuffer(INode self, WStr buf)
+ |  
+ |  SetVertTicks(self, *args)
+ |      SetVertTicks(INode self, bool onOff)
+ |  
+ |  SetVertexColorMapChannel(self, *args)
+ |      SetVertexColorMapChannel(INode self, int vcmc)
+ |  
+ |  SetVertexColorMode(self, *args)
+ |      SetVertexColorMode(INode self, bool onOff)
+ |  
+ |  SetVertexColorType(self, *args)
+ |      SetVertexColorType(INode self, int nvct)
+ |  
+ |  SetVisibility(self, *args)
+ |      SetVisibility(INode self, float vis, TimeValue t=Autodesk::Max::Now())
+ |      SetVisibility(INode self, float vis)
+ |  
+ |  SetVisibilityController(self, *args)
+ |      SetVisibilityController(INode self, Control cont)
+ |  
+ |  SetWireColor(self, *args)
+ |      SetWireColor(INode self, Color newcolor)
+ |  
+ |  SetWorldPosition(self, *args)
+ |      SetWorldPosition(INode self, Point3 val, TimeValue t=Autodesk::Max::Now())
+ |      SetWorldPosition(INode self, Point3 val)
+ |  
+ |  SetWorldRotation(self, *args)
+ |      SetWorldRotation(INode self, Quat val, TimeValue t=Autodesk::Max::Now())
+ |      SetWorldRotation(INode self, Quat val)
+ |  
+ |  SetWorldScale(self, *args)
+ |      SetWorldScale(INode self, Point3 val, TimeValue t=Autodesk::Max::Now())
+ |      SetWorldScale(INode self, Point3 val)
+ |  
+ |  SetWorldTM(self, *args)
+ |      SetWorldTM(INode self, Matrix3 val, TimeValue t=Autodesk::Max::Now())
+ |      SetWorldTM(INode self, Matrix3 val)
+ |  
+ |  SetXRefFile(self, *args)
+ |      SetXRefFile(INode self, int i, Asset file, bool reload)
+ |  
+ |  SetXRefFlags(self, *args)
+ |      SetXRefFlags(INode self, int i, DWORD flag, bool onOff)
+ |  
+ |  SetXRefParent(self, *args)
+ |      SetXRefParent(INode self, int i, INode par, bool autoOffset=True)
+ |      SetXRefParent(INode self, int i, INode par)
+ |  
+ |  ShowBone(self, *args)
+ |      ShowBone(INode self, bool boneVis)
+ |  
+ |  UnfreezeObjectAndLayer(self, dolayer=True)
+ |      UnfreezeObjectAndLayer(INode self, bool dolayer=True)
+ |      UnfreezeObjectAndLayer(INode self)
+ |  
+ |  UnhideObjectAndLayer(self, dolayer=True)
+ |      UnhideObjectAndLayer(INode self, bool dolayer=True)
+ |      UnhideObjectAndLayer(INode self)
+ |  
+ |  UpdateChangedXRefs(self, redraw=True)
+ |      UpdateChangedXRefs(INode self, bool redraw=True) -> bool
+ |      UpdateChangedXRefs(INode self) -> bool
+ |  
+ |  WorldAlignPivot(self, *args)
+ |      WorldAlignPivot(INode self, TimeValue t, bool moveObject)
+ |  
+ |  __del__ lambda self
+ |  
+ |  __eq__(self, *args)
+ |      __eq__(INode self, Wrapper w) -> bool
+ |  
+ |  __init__(self, *args, **kwargs)
+ |  
+ |  __ne__(self, *args)
+ |      __ne__(INode self, Wrapper w) -> bool
+ |  
+ |  __repr__ = _swig_repr(self)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  AttachNodesToGroup(*args)
+ |      AttachNodesToGroup(INodeTab nodes, INode pTargetNode) -> bool
+ |  
+ |  CloseGroup(*args)
+ |      CloseGroup(INodeTab nodes, bool selGroup=True)
+ |      CloseGroup(INodeTab nodes)
+ |      CloseGroup(bool selGroup=True)
+ |      CloseGroup()
+ |  
+ |  DeleteNodes(*args)
+ |      DeleteNodes(INodeTab aNodes, bool aKeepChildTM=True, bool aRedraw=True, bool overrideSlaveTM=False) -> unsigned int
+ |      DeleteNodes(INodeTab aNodes, bool aKeepChildTM=True, bool aRedraw=True) -> unsigned int
+ |      DeleteNodes(INodeTab aNodes, bool aKeepChildTM=True) -> unsigned int
+ |      DeleteNodes(INodeTab aNodes) -> unsigned int
+ |  
+ |  DetachNodesFromGroup(*args)
+ |      DetachNodesFromGroup(INodeTab nodes) -> bool
+ |  
+ |  ExplodeNodes(*args)
+ |      ExplodeNodes(INodeTab nodes)
+ |      ExplodeNodes()
+ |  
+ |  FindNodeFromBaseObject(*args)
+ |      FindNodeFromBaseObject(ReferenceTarget obj) -> INode
+ |  
+ |  FlashNodes(*args)
+ |      FlashNodes(INodeTab nodes)
+ |  
+ |  GetAffectChildren()
+ |      GetAffectChildren() -> bool
+ |  
+ |  GetINodeByHandle(*args)
+ |      GetINodeByHandle(ULONG handle) -> INode
+ |  
+ |  GetINodeByName(*args)
+ |      GetINodeByName(wchar_t const * name) -> INode
+ |  
+ |  GetINodeFromRenderID(*args)
+ |      GetINodeFromRenderID(UWORD id) -> INode
+ |  
+ |  GetPivotMode()
+ |      GetPivotMode() -> int
+ |  
+ |  GroupNodes(*args)
+ |      GroupNodes(INodeTab nodes, WStr name, bool selGroup) -> INode
+ |      GroupNodes(INodeTab nodes, WStr name) -> INode
+ |      GroupNodes(INodeTab nodes) -> INode
+ |  
+ |  NodeColorPicker(*args)
+ |      NodeColorPicker(HWND hWnd, DWORD & col) -> bool
+ |  
+ |  OpenGroup(*args)
+ |      OpenGroup(INodeTab nodes, bool clearSel=True)
+ |      OpenGroup(INodeTab nodes)
+ |      OpenGroup(bool clearSel=True)
+ |      OpenGroup()
+ |  
+ |  SetAffectChildren(*args)
+ |      SetAffectChildren(bool bAffectChildren)
+ |  
+ |  SetNodeAttribute(*args)
+ |      SetNodeAttribute(INodeTab nodes, int whatAttrib, int onOff)
+ |      SetNodeAttribute(INode node, int whatAttrib, int onOff)
+ |  
+ |  SetPivotMode(*args)
+ |      SetPivotMode(int pivMode)
+ |  
+ |  UngroupNodes(*args)
+ |      UngroupNodes(INodeTab nodes)
+ |      UngroupNodes()
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  AllEdges
+ |      GetAllEdges(INode self) -> bool
+ |  
+ |  ApplyAtmospherics
+ |      GetApplyAtmospherics(INode self) -> bool
+ |  
+ |  BackfaceCull
+ |      GetBackCull(INode self) -> bool
+ |  
+ |  BaseObject
+ |      GetBaseObject(INode self) -> Object
+ |  
+ |  BoxMode
+ |      GetBoxMode(INode self) -> bool
+ |  
+ |  CastShadows
+ |      GetCastShadows(INode self) -> bool
+ |  
+ |  Children
+ |  
+ |  FaceCount
+ |      GetFaceCount(INode self, TimeValue t=Autodesk::Max::Now()) -> int
+ |      GetFaceCount(INode self) -> int
+ |  
+ |  Freeze
+ |      IsFrozen(INode self) -> bool
+ |  
+ |  GBufferID
+ |      GetGBufID(INode self) -> ULONG
+ |  
+ |  Hide
+ |      IsNodeHidden(INode self, bool forRenderer=False) -> bool
+ |      IsNodeHidden(INode self) -> bool
+ |  
+ |  IgnoreExtents
+ |      GetIgnoreExtents(INode self) -> bool
+ |  
+ |  InheritVisibility
+ |      GetInheritVisibility(INode self) -> bool
+ |  
+ |  IsRoot
+ |      GetIsRoot(INode self) -> bool
+ |  
+ |  LayerName
+ |      GetLayerName(INode self) -> TCHAR const *
+ |  
+ |  LocalPosition
+ |      GetLocalPosition(INode self, TimeValue t=Autodesk::Max::Now()) -> Point3
+ |      GetLocalPosition(INode self) -> Point3
+ |  
+ |  LocalRotation
+ |      GetLocalRotation(INode self, TimeValue t=Autodesk::Max::Now()) -> Quat
+ |      GetLocalRotation(INode self) -> Quat
+ |  
+ |  LocalScaling
+ |      GetLocalScale(INode self, TimeValue t=Autodesk::Max::Now()) -> Point3
+ |      GetLocalScale(INode self) -> Point3
+ |  
+ |  LocalTransform
+ |      GetLocalTM(INode self, TimeValue t=Autodesk::Max::Now()) -> Matrix3
+ |      GetLocalTM(INode self) -> Matrix3
+ |  
+ |  Material
+ |      GetMaterial(INode self) -> Mtl
+ |  
+ |  Modifiers
+ |  
+ |  MotionBlurEnabled
+ |      GetMotionBlurOnOff(INode self) -> bool
+ |  
+ |  MotionBlurMultiplier
+ |      GetImageBlurMultiplier(INode self, TimeValue t=Autodesk::Max::Now()) -> float
+ |      GetImageBlurMultiplier(INode self) -> float
+ |  
+ |  MotionBlurType
+ |      GetMotionBlurType(INode self) -> int
+ |  
+ |  Name
+ |      GetName(INode self) -> wchar_t const *
+ |  
+ |  NeverDegrade
+ |      GetNeverDegrade(INode self) -> bool
+ |  
+ |  NumChildren
+ |      GetNumChildren(INode self) -> int
+ |  
+ |  NumModifiers
+ |      GetNumModifiers(INode self) -> int
+ |  
+ |  Object
+ |      GetObject(INode self) -> Object
+ |  
+ |  Parent
+ |      GetParent(INode self) -> INode
+ |  
+ |  Position
+ |      GetWorldPosition(INode self, TimeValue t=Autodesk::Max::Now()) -> Point3
+ |      GetWorldPosition(INode self) -> Point3
+ |  
+ |  PrimaryVisibility
+ |      GetPrimaryVisibility(INode self) -> bool
+ |  
+ |  ReceiveShadows
+ |      GetReceiveShadows(INode self) -> bool
+ |  
+ |  RenderOccluded
+ |      GetRenderOccluded(INode self) -> bool
+ |  
+ |  Renderable
+ |      GetRenderable(INode self) -> bool
+ |  
+ |  Rotation
+ |      GetWorldRotation(INode self, TimeValue t=Autodesk::Max::Now()) -> Quat
+ |      GetWorldRotation(INode self) -> Quat
+ |  
+ |  Scaling
+ |      GetWorldScale(INode self, TimeValue t=Autodesk::Max::Now()) -> Point3
+ |      GetWorldScale(INode self) -> Point3
+ |  
+ |  SecondaryVisibility
+ |      GetSecondaryVisibility(INode self) -> bool
+ |  
+ |  SeeThrough
+ |      GetSeeThrough(INode self) -> bool
+ |  
+ |  ShadeVertexColors
+ |      GetShadeVertexColors(INode self) -> bool
+ |  
+ |  ShowFrozenWithMtl
+ |      GetShowFrozenWithMtl(INode self) -> bool
+ |  
+ |  Trajectory
+ |      GetTrajectoryON(INode self) -> bool
+ |  
+ |  Transform
+ |      GetWorldTM(INode self, TimeValue t=Autodesk::Max::Now()) -> Matrix3
+ |      GetWorldTM(INode self) -> Matrix3
+ |  
+ |  VertexColorMapChannel
+ |      GetVertexColorMapChannel(INode self) -> int
+ |  
+ |  VertexColorMode
+ |      GetVertexColorMode(INode self) -> bool
+ |  
+ |  VertexColorType
+ |      GetVertexColorType(INode self) -> int
+ |  
+ |  VertexCount
+ |      GetVertexCount(INode self, TimeValue t=Autodesk::Max::Now()) -> int
+ |      GetVertexCount(INode self) -> int
+ |  
+ |  VertexTicks
+ |      GetVertTicks(INode self) -> bool
+ |  
+ |  Visibility
+ |      GetVisibility(INode self, TimeValue t=Autodesk::Max::Now()) -> float
+ |      GetVisibility(INode self) -> float
+ |  
+ |  WireColor
+ |      GetWireColor(INode self) -> Color
+ |  
+ |  X
+ |      GetPositionX(INode self, TimeValue t=Autodesk::Max::Now()) -> float
+ |      GetPositionX(INode self) -> float
+ |  
+ |  Y
+ |      GetPositionY(INode self, TimeValue t=Autodesk::Max::Now()) -> float
+ |      GetPositionY(INode self) -> float
+ |  
+ |  Z
+ |      GetPositionZ(INode self, TimeValue t=Autodesk::Max::Now()) -> float
+ |      GetPositionZ(INode self) -> float
+ |  
+ |  thisown
+ |      The membership flag
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __swig_destroy__ = <built-in function delete_INode>
+ |      delete_INode(INode self)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from ReferenceTarget:
+ |  
+ |  NotifyTarget(self, *args)
+ |      NotifyTarget(ReferenceTarget self, int message, ReferenceMaker hMaker)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from ReferenceMaker:
+ |  
+ |  ClearFlagInHierarchy(self, *args)
+ |      ClearFlagInHierarchy(ReferenceMaker self, DWORD mask)
+ |  
+ |  DeleteMe(self)
+ |      DeleteMe(ReferenceMaker self)
+ |  
+ |  DeleteReference(self, *args)
+ |      DeleteReference(ReferenceMaker self, int i) -> RefResult
+ |  
+ |  FindRef(self, *args)
+ |      FindRef(ReferenceMaker self, ReferenceTarget rtarg) -> int
+ |  
+ |  GetNumRefs(self)
+ |      GetNumRefs(ReferenceMaker self) -> int
+ |  
+ |  GetReference(self, *args)
+ |      GetReference(ReferenceMaker self, int i) -> ReferenceTarget
+ |  
+ |  NotifyChanged(self)
+ |      NotifyChanged(ReferenceMaker self) -> RefResult
+ |  
+ |  NotifyDependents(self, *args)
+ |      NotifyDependents(ReferenceMaker self, int message, Interval changeInt=Autodesk::Max::Forever(), int partID=0, SClass_ID sclass=NOTIFY_ALL, 
+ |          bool propagate=TRUE) -> RefResult
+ |      NotifyDependents(ReferenceMaker self, int message, Interval changeInt=Autodesk::Max::Forever(), int partID=0, SClass_ID sclass=NOTIFY_ALL) -> RefResult
+ |      NotifyDependents(ReferenceMaker self, int message, Interval changeInt=Autodesk::Max::Forever(), int partID=0) -> RefResult
+ |      NotifyDependents(ReferenceMaker self, int message, Interval changeInt=Autodesk::Max::Forever()) -> RefResult
+ |      NotifyDependents(ReferenceMaker self, int message) -> RefResult
+ |  
+ |  ReplaceReference(self, *args)
+ |      ReplaceReference(ReferenceMaker self, int i, ReferenceTarget target, bool delOld=TRUE) -> RefResult
+ |      ReplaceReference(ReferenceMaker self, int i, ReferenceTarget target) -> RefResult
+ |  
+ |  RescaleWorldUnits(self, *args)
+ |      RescaleWorldUnits(ReferenceMaker self, float f)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from ReferenceMaker:
+ |  
+ |  NumRefs
+ |      GetNumRefs(ReferenceMaker self) -> int
+ |  
+ |  Refs
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from Animatable:
+ |  
+ |  AddNewKey(self, *args)
+ |      AddNewKey(Animatable self, TimeValue t, DWORD flags)
+ |  
+ |  AssignController(self, *args)
+ |      AssignController(Animatable self, Animatable control, int subAnim) -> bool
+ |  
+ |  CanAssignController(self, *args)
+ |      CanAssignController(Animatable self, int i) -> bool
+ |  
+ |  CanCopyAnim(self)
+ |      CanCopyAnim(Animatable self) -> bool
+ |  
+ |  CanCopyTrack(self, *args)
+ |      CanCopyTrack(Animatable self, Interval iv, DWORD flags) -> bool
+ |  
+ |  CanDeleteSubAnim(self, *args)
+ |      CanDeleteSubAnim(Animatable self, int i) -> bool
+ |  
+ |  CanMakeUnique(self)
+ |      CanMakeUnique(Animatable self) -> bool
+ |  
+ |  ClearAFlag(self, *args)
+ |      ClearAFlag(Animatable self, DWORD mask)
+ |  
+ |  ClearAFlagEx(self, *args)
+ |      ClearAFlagEx(Animatable self, DWORD mask)
+ |  
+ |  ClearFlagBit(self, *args)
+ |      ClearFlagBit(Animatable self, int index)
+ |  
+ |  CopyKeysFromTime(self, *args)
+ |      CopyKeysFromTime(Animatable self, TimeValue src, TimeValue dst, DWORD flags)
+ |  
+ |  DeleteKeyAtTime(self, *args)
+ |      DeleteKeyAtTime(Animatable self, TimeValue t)
+ |  
+ |  DeleteKeyByIndex(self, *args)
+ |      DeleteKeyByIndex(Animatable self, int index)
+ |  
+ |  DeleteKeys(self, *args)
+ |      DeleteKeys(Animatable self, DWORD flags)
+ |  
+ |  DeleteSubAnim(self, *args)
+ |      DeleteSubAnim(Animatable self, int i)
+ |  
+ |  DeleteTime(self, *args)
+ |      DeleteTime(Animatable self, Interval iv, DWORD flags)
+ |  
+ |  DoesSupportTimeOperations(self)
+ |      DoesSupportTimeOperations(Animatable self) -> bool
+ |  
+ |  EditTimeRange(self, *args)
+ |      EditTimeRange(Animatable self, Interval range, DWORD flags)
+ |  
+ |  FreeCaches(self)
+ |      FreeCaches(Animatable self)
+ |  
+ |  GetAnimHandle(self)
+ |      GetAnimHandle(Animatable self) -> AnimHandle
+ |  
+ |  GetClassID(self)
+ |      GetClassID(Animatable self) -> Class_ID
+ |  
+ |  GetClassName(self)
+ |      GetClassName(Animatable self) -> WStr
+ |  
+ |  GetCustomAttributeContainer(self)
+ |      GetCustomAttributeContainer(Animatable self) -> CustomAttributeContainer
+ |  
+ |  GetHasSubElements(self, type=0)
+ |      GetHasSubElements(Animatable self, int type=0) -> bool
+ |      GetHasSubElements(Animatable self) -> bool
+ |  
+ |  GetKeyIndex(self, *args)
+ |      GetKeyIndex(Animatable self, TimeValue t) -> int
+ |  
+ |  GetKeyTime(self, *args)
+ |      GetKeyTime(Animatable self, int index) -> TimeValue
+ |  
+ |  GetNextKeyTime(self, *args)
+ |      GetNextKeyTime(Animatable self, TimeValue t, DWORD flags, TimeValue & nt) -> bool
+ |  
+ |  GetNodeName(self)
+ |      GetNodeName(Animatable self) -> WStr
+ |  
+ |  GetNumKeys(self)
+ |      GetNumKeys(Animatable self) -> int
+ |  
+ |  GetNumSubAnims(self)
+ |      GetNumSubAnims(Animatable self) -> int
+ |  
+ |  GetParameterBlock(self)
+ |      GetParameterBlock(Animatable self) -> ParameterBlock
+ |  
+ |  GetSubAnim(self, *args)
+ |      GetSubAnim(Animatable self, int i) -> Animatable
+ |  
+ |  GetSubAnimName(self, *args)
+ |      GetSubAnimName(Animatable self, int i) -> WStr
+ |  
+ |  GetSuperClassID(self)
+ |      GetSuperClassID(Animatable self) -> SClass_ID
+ |  
+ |  GetTimeRange(self, *args)
+ |      GetTimeRange(Animatable self, DWORD flags) -> Interval
+ |  
+ |  InsertTime(self, *args)
+ |      InsertTime(Animatable self, TimeValue ins, TimeValue amount)
+ |  
+ |  IsAnimated(self)
+ |      IsAnimated(Animatable self) -> bool
+ |  
+ |  IsKeyAtTime(self, *args)
+ |      IsKeyAtTime(Animatable self, TimeValue t, DWORD flags) -> bool
+ |  
+ |  IsSubClassOf(self, *args)
+ |      IsSubClassOf(Animatable self, Class_ID classID) -> bool
+ |  
+ |  MoveKeys(self, *args)
+ |      MoveKeys(Animatable self, ParamDimensionBase dim, float delta, DWORD flags)
+ |  
+ |  ReverseTime(self, *args)
+ |      ReverseTime(Animatable self, Interval iv, DWORD flags)
+ |  
+ |  ScaleKeyValues(self, *args)
+ |      ScaleKeyValues(Animatable self, ParamDimensionBase dim, float origin, float scale, DWORD flags)
+ |  
+ |  ScaleTime(self, *args)
+ |      ScaleTime(Animatable self, Interval iv, float s)
+ |  
+ |  SetAFlag(self, *args)
+ |      SetAFlag(Animatable self, DWORD mask)
+ |  
+ |  SetAFlagEx(self, *args)
+ |      SetAFlagEx(Animatable self, DWORD mask)
+ |  
+ |  SetFlagBit(self, *args)
+ |      SetFlagBit(Animatable self, int index, bool newValue=True)
+ |      SetFlagBit(Animatable self, int index)
+ |  
+ |  SubNumToRefNum(self, *args)
+ |      SubNumToRefNum(Animatable self, int subNum) -> int
+ |  
+ |  TestAFlag(self, *args)
+ |      TestAFlag(Animatable self, DWORD mask) -> bool
+ |  
+ |  TestAFlagEx(self, *args)
+ |      TestAFlagEx(Animatable self, DWORD mask) -> bool
+ |  
+ |  TestFlagBit(self, *args)
+ |      TestFlagBit(Animatable self, int index) -> bool
+ |  
+ |  __getitem__(self, *args)
+ |      __getitem__(Animatable self, int i) -> Animatable
+ |  
+ |  __len__(self)
+ |      __len__(Animatable self) -> int
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods inherited from Animatable:
+ |  
+ |  ClearFlagInAllAnimatables(*args)
+ |      ClearFlagInAllAnimatables(DWORD mask)
+ |  
+ |  GetAnimByHandle(*args)
+ |      GetAnimByHandle(AnimHandle animHandle) -> Animatable
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from Animatable:
+ |  
+ |  AnimHandle
+ |      GetAnimHandle(Animatable self) -> AnimHandle
+ |  
+ |  ClassID
+ |      GetClassID(Animatable self) -> Class_ID
+ |  
+ |  KeyTimes
+ |  
+ |  NodeName
+ |      GetNodeName(Animatable self) -> WStr
+ |  
+ |  NumSubAnims
+ |      GetNumSubAnims(Animatable self) -> int
+ |  
+ |  ParameterBlock
+ |      GetParameterBlock(Animatable self) -> ParameterBlock
+ |  
+ |  SubAnimNames
+ |  
+ |  SubAnims
+ |  
+ |  SuperClassID
+ |      GetSuperClassID(Animatable self) -> SClass_ID
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from InterfaceServer:
+ |  
+ |  GetInterface(self, *args)
+ |      GetInterface(InterfaceServer self, Interface_ID id) -> BaseInterface
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from Wrapper:
+ |  
+ |  GetUnwrappedPtr(self)
+ |      GetUnwrappedPtr(Wrapper self) -> void *
+ |  
+ |  __nonzero__(self)
+ |      __nonzero__(Wrapper self) -> bool
+ |  
+ |  __str__(self)
+ |      __str__(Wrapper self) -> char const *
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from Wrapper:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
