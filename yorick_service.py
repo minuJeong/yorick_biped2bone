@@ -179,8 +179,6 @@ class Biped2BoneRenameRule(ServiceBase):
     def __init__(self,
                  lineedit_fromstring,
                  lineedit_tostring):
-        """ ctor """
-
         self.lineedit_fromstring = lineedit_fromstring
         self.lineedit_tostring = lineedit_tostring
 
@@ -213,9 +211,13 @@ class MaxScript(ServiceBase):
                 point.GetX(), point.GetY(), point.GetZ()
             )
 
-        gen_script = "BoneSys.createBone {} [1, 1, 1] [0, 0, 0]".format(
-            maxify_point3(basenode.worldpos)
-        )
+        pos_1 = maxify_point3(basenode.worldpos)
+        pos_2 = "[0, 0, 0]"
+
+        if basenode.parent and basenode.parent.worldpos:
+            pos_2 = maxify_point3(basenode.parent.worldpos)
+
+        gen_script = "BoneSys.createBone {} {} [0, 0, 1]".format(pos_1, pos_2)
 
         # try to create bone, escape on fail
         fbnode = MaxPlus.Core.EvalMAXScript(gen_script)
@@ -227,6 +229,26 @@ class MaxScript(ServiceBase):
 
         # connect parenting information
         if basenode.parent and basenode.parent.node_in_max:
-            node.Parent = basenode.parent.node_in_max
+            node.SetParent(basenode.parent.node_in_max)
 
         return node
+
+    @staticmethod
+    def CopyMotion(from_rootnode, to_rootnode):
+        print(from_rootnode, to_rootnode)
+
+class MaxSceneControl(ServiceBase):
+
+    TICKS = 160
+
+    @staticmethod
+    def SelectInScene(node):
+        if not node:
+            return
+
+        MaxPlus.SelectionManager_SelectNode(node.node_in_max)
+
+    @staticmethod
+    def GoToAndStop(key):
+        anim = MaxPlus.Animation
+        anim.SetTime(key * MaxSceneControl.TICKS)

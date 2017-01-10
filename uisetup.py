@@ -127,6 +127,9 @@ class JointListView(__uicompbase):
         if not selected:
             return None
 
+        if selected not in self.item_to_node:
+            return None
+
         return self.item_to_node[selected]
 
 
@@ -168,6 +171,9 @@ class l_BipedList(JointListView):
         map(lambda x: x.enable(),
             self.selection_required_buttons)
 
+        yorick_service.MaxSceneControl.SelectInScene(
+            self.get_selectednode())
+
     def reload(self):
         self._reload(yorick_service.BipedData)
 
@@ -187,6 +193,8 @@ class l_BoneList(JointListView):
             yorick_service.BoneData
         )
 
+        self.widget.selectionChanged = self.on_changeselect
+
     def reload(self):
         self._reload(yorick_service.BoneData)
 
@@ -196,6 +204,10 @@ class l_BoneList(JointListView):
     def map_node(self, rootnode):
         self._unload()
         self._map_treeitems(rootnode)
+
+    def on_changeselect(self, selected, deselected):
+        yorick_service.MaxSceneControl.SelectInScene(
+            self.get_selectednode())
 
 
 class __DisableableButton(object):
@@ -236,13 +248,13 @@ class b_GenBones(__DisableableButton):
             )
 
         # start generate (high overhead)
-        newroot = bonelist_comp.datacontainer.generate(
+        generated_root_node = bonelist_comp.datacontainer.generate(
             bipedlist_comp.get_selectednode(),
             bonelist_comp.rename_rule
         )
 
         # add items to treeview
-        bonelist_comp.map_node(newroot)
+        bonelist_comp.map_node(generated_root_node)
         bonelist_comp.expandall()
 
 
@@ -257,11 +269,16 @@ class b_CopyMotions(__DisableableButton):
         self.disable()
 
     def clicked(self):
-        print("Copy motion!")
+        bipedlist_comp = getui("l_BipedList")
+        bonelist_comp = getui("l_BoneList")
+
+        biped_root = bipedlist_comp.get_selectednode()
+        bone_root = bonelist_comp.get_selectednode()
+
+        yorick_service.MaxSceneControl.GoToAndStop(0)
 
 
 class b_Reload:
-
     def __init__(self, widget):
         self.widget = widget
 
@@ -271,7 +288,6 @@ class b_Reload:
 
 
 class b_Unload:
-
     def __init__(self, widget):
         self.widget = widget
 
@@ -281,7 +297,6 @@ class b_Unload:
 
 
 class b_Expand:
-
     def __init__(self, widget):
         self.widget = widget
 
@@ -291,7 +306,6 @@ class b_Expand:
 
 
 class b_Collapse:
-
     def __init__(self, widget):
         self.widget = widget
 
@@ -301,12 +315,10 @@ class b_Collapse:
 
 
 class le_rename_from:
-
     def __init__(self, widget):
         self.widget = widget
 
 
 class le_rename_to:
-
     def __init__(self, widget):
         self.widget = widget
