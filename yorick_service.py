@@ -12,6 +12,7 @@ date: Nov. 2016
 All Copyrights Reserved, (C) Maverick Games, 2016
 """
 
+from functools import partial
 
 # 3dsMax
 import MaxPlus
@@ -58,35 +59,52 @@ class Nodes:
     """ data model for node gatherer
         gather nodes from 3dsMax scene """
 
-    class Node:
+    class Node(object):
         children = []
         parent = None
 
         node_in_max = None
-        listitem = None
 
         def __init__(self, parent=None):
-            self.parent = parent
+            self.override_parent(parent)
 
-        def map_node(self, node_max):
-            """ node in argument is 3dsMax node,
+        def override_parent(self, parent):
+            self.parent = parent
+            if parent:
+                if not parent.children:
+                    parent.children = []
+                parent.children.append(self)
+
+        def map_node(self, maxnode):
+            """ maxnode is MaxPlus INode,
                 children are abstract nodes """
 
-            self.node_in_max = node_max
+            self.node_in_max = maxnode
             self.children = []
 
-            for i in range(node_max.GetNumChildren()):
+            maxnode_num_children = maxnode.GetNumChildren()
+            for maxnode_child_index in range(maxnode_num_children):
                 childnode = Nodes.Node(self)
-                childnode.map_node(node_max.GetChild(i))
-                self.children.append(childnode)
+                childnode.map_node(
+                    maxnode.GetChild(maxnode_child_index)
+                )
 
         @property
         def node_name(self):
+            if not self.node_in_max:
+                return "UNNAMED_NODE"
             return self.node_in_max.GetName()
 
         @property
         def worldpos(self):
             return self.node_in_max.GetWorldPosition()
+
+        @worldpos.setter
+        def worldpos(self, value):
+            self.node_in_max.SetWorldPosition(value)
+
+        def clone(self, parent=None):
+            return Nodes.Node(parent)
 
         def __repr__(self):
             return self.node_name
@@ -104,9 +122,10 @@ class Nodes:
         rootnode_max = MaxPlus.Core.GetRootNode()
 
         # recursively add all children nodes here
-        self.rootnode.map_node(
-            rootnode_max
-        )
+        if rootnode_max:
+            self.rootnode.map_node(
+                rootnode_max
+            )
 
         return self.rootnode
 
@@ -127,46 +146,35 @@ class BoneData(Nodes):
         """ bone data does not need to gather anything """
         return None
 
-    def generate(self, rootnode, renamerule):
+    def generate(self, biped_node, renamerule):
         """ recursively clone nodes and create bones """
 
-        def clone_node(old_bipednode, parent=None):
-            """ node_in_max is copied, but will be replaced while recurse """
+        def assign_node_in_max(old_child, new_child):
+            newname = renamerule.rename(old_child.node_name)
+            new_child.node_in_max = MaxScript.CreateBone(
+                                        old_child,
+                                        new_child.parent,
+                                        newname
+                                    )
+            return new_child
 
-            new_bonenode = Nodes.Node(parent)
-            new_bonenode.children = old_bipednode.children
-            new_bonenode.node_in_max = old_bipednode.node_in_max
+        def recurse_copychild(old_parent, new_parent):
+            for old_child in old_parent.children:
+                new_child = old_child.clone(new_parent)
+                new_bone_node = assign_node_in_max(old_child, new_child)
 
-            return new_bonenode
+                # connect max-hierarchy
+                new_bone_node.node_in_max.SetParent(new_parent.node_in_max)
 
-        def recurse(parentnode):
-            """ will be called recursively.
-                parentnode should be cloned before here """
+                # recurse
+                recurse_copychild(old_child, new_child)
 
-            # try create bone
-            newname = renamerule.rename(parentnode.node_name)
-            created_bone = MaxScript.CreateBone(parentnode, newname)
-            if not created_bone:
-                return
+        new_root = biped_node.clone()
+        new_root.override_parent(None)
+        assign_node_in_max(biped_node, new_root)
+        recurse_copychild(biped_node, new_root)
 
-            # reassign max node
-            parentnode.node_in_max = created_bone
-            if not parentnode.children:
-                return
-
-            oldchildren = parentnode.children[:]
-            parentnode.children = []
-            # recurse children
-            for node in oldchildren:
-                newchild = clone_node(node, parentnode)
-                parentnode.children.append(newchild)
-                recurse(newchild)
-
-        # clone children, and start recursive
-        newroot = clone_node(rootnode)
-        recurse(newroot)
-
-        return newroot
+        return new_root
 
 
 class Biped2BoneRenameRule(ServiceBase):
@@ -205,66 +213,74 @@ class Biped2BoneRenameRule(ServiceBase):
 class MaxScript(ServiceBase):
 
     @staticmethod
-    def CreateBone(basenode, newname=None):
+    def CreateBone(old_node, parent_node=None, newname=None):
         def maxify_point3(point):
             return "[{}, {}, {}]".format(
                 point.GetX(), point.GetY(), point.GetZ()
             )
 
-        pos_1 = maxify_point3(basenode.worldpos)
-        pos_2 = "[0, 0, 0]"
+        pos_1 = maxify_point3(old_node.worldpos)
+        pos_2 = pos_1
+        zaxis = "[0, 0, 1]"
 
-        if basenode.parent and basenode.parent.worldpos:
-            pos_2 = maxify_point3(basenode.parent.worldpos)
+        if old_node.children:
+            pos_2 = maxify_point3(old_node.children[0].worldpos)
 
-        gen_script = "BoneSys.createBone {} {} [0, 0, 1]".format(pos_1, pos_2)
+        if old_node.node_in_max:
+            axis_type = old_node.node_in_max.GetBoneAxis()
+            if axis_type == 0:
+                zaxis = maxify_point3(MaxPlus.Point3(0, 0, 1))
+            else:
+                raise Exception("Not implemented!")
+
+        # generate maxscript
+        gen_script = \
+            "BoneSys.createBone {} {} {}".format(pos_1, pos_2, zaxis)
 
         # try to create bone, escape on fail
         fbnode = MaxPlus.Core.EvalMAXScript(gen_script)
         if not fbnode:
             return None
 
-        node = fbnode.GetNode()
-        node.SetName(newname or basenode.node_name)
-
-        # connect parenting information
-        if basenode.parent and basenode.parent.node_in_max:
-            node.SetParent(basenode.parent.node_in_max)
-
-        return node
-
-    @staticmethod
-    def GetKeyCount(node, attr):
-        return MaxPlus.Core.EvalMAXScript(
-                "numKeys ${}.{}.controller".format(node, attr))
-
-    @staticmethod
-    def GetKeyAt(node, attr, index):
-        return MaxPlus.Core.EvalMAXScript(
-            "getKey ${}.{}.controller {}".format(node, attr, index))
-
-    @staticmethod
-    def GetKeys(node, attr):
-        keys = {}
-        count = MaxScript.GetKeyCount(node, attr).GetInt()
-
-        if count < 0:
-            return
-
-        for index in range(count):
-            keys[index] = MaxScript.GetKeyAt(node, attr, index)
-
-        return keys
+        maxnode = fbnode.GetNode()
+        maxnode.SetName(newname or old_node.node_name)
+        return maxnode
 
     @staticmethod
     def CopyMotions(from_rootnode, to_rootnode):
-        MaxSceneControl.GoToAndStop(0)
-
         if not from_rootnode or not to_rootnode:
            print("Please select root nodes above.")
            return
 
-        print("ROTATIONS", MaxScript.GetKeys(from_rootnode, "rotation"))
+        def copymotion_recurse_children(from_node, to_node):
+            if not from_node.node_in_max or \
+               not to_node.node_in_max:
+                return
+
+            to_node.node_in_max.Transform = from_node.node_in_max.Transform
+
+            # recurse children zipped
+            if from_node.children:
+                list(map(
+                    lambda x: copymotion_recurse_children(*x),
+                    zip(
+                        from_node.children,
+                        to_node.children
+                    )
+                ))
+
+        animation_range = MaxPlus.Animation.GetAnimRange()
+        starttime = animation_range.Start() / 160
+        endtime = animation_range.End() / 160
+
+        MaxSceneControl.GoToAndStop(0)
+        MaxPlus.Animation.SetAnimateButtonState(True)
+        for frame in range(starttime, endtime + 1):
+            MaxSceneControl.GoToAndStop(frame)
+            copymotion_recurse_children(from_rootnode, to_rootnode)
+
+        MaxSceneControl.GoToAndStop(0)
+        MaxPlus.Animation.SetAnimateButtonState(False)
 
 
 class MaxSceneControl(ServiceBase):
@@ -276,7 +292,8 @@ class MaxSceneControl(ServiceBase):
         if not node:
             return
 
-        MaxPlus.SelectionManager_SelectNode(node.node_in_max)
+        if node.node_in_max:
+            MaxPlus.SelectionManager_SelectNode(node.node_in_max)
 
     @staticmethod
     def GoToAndStop(key):

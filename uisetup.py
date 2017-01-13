@@ -134,6 +134,12 @@ class JointListView(__uicompbase):
 
         return self.item_to_node[selected]
 
+    def set_select(self, index):
+        self.widget.setItemSelected(
+            self.widget.topLevelItem(index),
+            True
+        )
+
 
 class l_BipedList(JointListView):
     """ Biped List Handler
@@ -151,8 +157,7 @@ class l_BipedList(JointListView):
         self.widget.selectionChanged = self.on_changeselect
 
         self.selection_required_buttons = [
-            getui("b_GenBones"),
-            getui("b_CopyMotions")
+            getui("b_GenBones")
         ]
 
     def on_changeselect(self, selected, deselected):
@@ -250,27 +255,19 @@ class b_GenBones(__DisableableButton):
             )
 
         # start generate (high overhead)
-        generated_root_node = bonelist_comp.datacontainer.generate(
-            bipedlist_comp.get_selectednode(),
-            bonelist_comp.rename_rule
-        )
+        generated_root_node = \
+            bonelist_comp.datacontainer.generate(
+                bipedlist_comp.get_selectednode(),
+                bonelist_comp.rename_rule
+            )
 
         # add items to treeview
         bonelist_comp.map_node(generated_root_node)
         bonelist_comp.expandall()
 
+        getui("l_BoneList").set_select(0)
 
-class b_CopyMotions(__DisableableButton):
-
-    def __init__(self, widget):
-        self.widget = widget
-
-        self.enabletext = "Copy Motions"
-        self.disabletext = "Select Biped.."
-
-        self.disable()
-
-    def clicked(self):
+        # copy motions
         yorick_service.MaxScript.CopyMotions(
             getui("l_BipedList").get_selectednode(),
             getui("l_BoneList").get_selectednode()
