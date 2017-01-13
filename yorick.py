@@ -153,8 +153,8 @@ class Biped2Bone(QMainWindow, UI):
 
         QMainWindow.__init__(self, None)
 
-        floags = self.windowFlags()
-        self.setWindowFlags(floags | Qt.WindowStaysOnTopHint)
+        flags = self.windowFlags()
+        self.setWindowFlags(flags | Qt.WindowStaysOnTopHint)
 
         # load qt ui
         self.setupUi(self)

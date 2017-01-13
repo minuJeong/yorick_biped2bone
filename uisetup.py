@@ -105,9 +105,11 @@ class JointListView(__uicompbase):
             node.listitem = child
 
             # partial to generate gen_child recurse
-            map(partial(gen_child, child), node.children)
+            list(map(partial(gen_child, child), node.children))
             return child
 
+        # ignite recursion
+        self.item_to_node[rootitem] = rootnode
         rootitem.addChildren(
             list(map(partial(gen_child, rootitem), rootnode.children))
         )
@@ -269,13 +271,10 @@ class b_CopyMotions(__DisableableButton):
         self.disable()
 
     def clicked(self):
-        bipedlist_comp = getui("l_BipedList")
-        bonelist_comp = getui("l_BoneList")
-
-        biped_root = bipedlist_comp.get_selectednode()
-        bone_root = bonelist_comp.get_selectednode()
-
-        yorick_service.MaxSceneControl.GoToAndStop(0)
+        yorick_service.MaxScript.CopyMotions(
+            getui("l_BipedList").get_selectednode(),
+            getui("l_BoneList").get_selectednode()
+        )
 
 
 class b_Reload:

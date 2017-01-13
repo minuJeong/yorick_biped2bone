@@ -234,8 +234,38 @@ class MaxScript(ServiceBase):
         return node
 
     @staticmethod
-    def CopyMotion(from_rootnode, to_rootnode):
-        print(from_rootnode, to_rootnode)
+    def GetKeyCount(node, attr):
+        return MaxPlus.Core.EvalMAXScript(
+                "numKeys ${}.{}.controller".format(node, attr))
+
+    @staticmethod
+    def GetKeyAt(node, attr, index):
+        return MaxPlus.Core.EvalMAXScript(
+            "getKey ${}.{}.controller {}".format(node, attr, index))
+
+    @staticmethod
+    def GetKeys(node, attr):
+        keys = {}
+        count = MaxScript.GetKeyCount(node, attr).GetInt()
+
+        if count < 0:
+            return
+
+        for index in range(count):
+            keys[index] = MaxScript.GetKeyAt(node, attr, index)
+
+        return keys
+
+    @staticmethod
+    def CopyMotions(from_rootnode, to_rootnode):
+        MaxSceneControl.GoToAndStop(0)
+
+        if not from_rootnode or not to_rootnode:
+           print("Please select root nodes above.")
+           return
+
+        print("ROTATIONS", MaxScript.GetKeys(from_rootnode, "rotation"))
+
 
 class MaxSceneControl(ServiceBase):
 
