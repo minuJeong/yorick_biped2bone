@@ -6,19 +6,10 @@ Readme.md
 ---
 
 아래 조건이 필요합니다.
-
  - 3dsMax에서 실행되어야 합니다.
- - PyQt4가 3dsMax의 Python을 타겟으로 설치되어야 합니다.
 
-(참고) 3dsMax의 Python은 3dsMax 2015 기준으로, 아래 경로에 있습니다. 
- - C:\Program Files\Autodesk\3ds Max 2015\python
-
-(참고) PyQt4는 아래 경로에서 설치할 수 있습니다.
- - https://www.riverbankcomputing.com/software/pyqt/download
- - 도움이 필요하면 알려주세요.
- 
-
-3dsMax의 Python은 기본적으로 2.7(64bit) 버전을 사용합니다. 다른 버전으로 대체하는 것은 테스트되지 않았습니다.
+(참고) 3dsMax의 Python은 3dsMax 2018 기준으로, 아래 경로에 있습니다. 
+ - C:\Program Files\Autodesk\3ds Max 2018\python\3dsmaxpy.exe
 
 
 실행

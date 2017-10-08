@@ -21,7 +21,7 @@ TODO:
 author: minu jeong
 date: Nov. 2016
 
-All Copyrights Reserved, (C) Maverick Games, 2016
+All Copyrights Reserved, (C) Maverick Games, 2017
 """
 
 # python built-ins
@@ -30,30 +30,24 @@ import sys
 import inspect
 from functools import partial
 
-# PyQt4
-from PyQt4 import uic
-from PyQt4.QtGui import QApplication
-from PyQt4.QtGui import QMainWindow
-from PyQt4.QtCore import Qt
+# paths
+package_dir = os.path.dirname(__file__)
+sys.path.append(package_dir)
+
+# PySide
+from PySide2.QtWidgets import QApplication
+from PySide2.QtWidgets import QMainWindow
+from PySide2.QtCore import Qt
+
+from uidef import biped2bone
 
 # package
 import uisetup
 import yorick_service
 
+reload(biped2bone)
 reload(uisetup)
 reload(yorick_service)
-
-
-# Read ui file to make ui def class
-package_dir = os.path.dirname(__file__)
-uipath = "{}\\{}".format(package_dir, "uidef")
-sys.path.append(uipath)
-
-UI, uibase = uic.loadUiType(
-    "{}/{}/Biped2Bone.ui".format(
-        package_dir, "uidef"
-    )
-)
 
 
 class UISetup:
@@ -137,47 +131,48 @@ class UISetup:
         return self.handlers[uitype]
 
 
-class Biped2Bone(QMainWindow, UI):
+class Biped2Bone(biped2bone.Ui_MainWindow):
     """ Application entry class using QT widgets. """
 
     instance = None
     uisetup = None
 
-    def init(self):
-        pass
-
-    def __init__(self):
+    def __init__(self, mainwin):
 
         yorick_service.Service.mainwindow = self
         Biped2Bone.instance = self
 
-        QMainWindow.__init__(self, None)
-
-        flags = self.windowFlags()
-        self.setWindowFlags(flags | Qt.WindowStaysOnTopHint)
+        flags = mainwin.windowFlags()
+        mainwin.setWindowFlags(flags | Qt.WindowStaysOnTopHint)
 
         # load qt ui
-        self.setupUi(self)
+        self.setupUi(mainwin)
 
         # setup ui
         self.uisetup = UISetup()
         self.uisetup.setup(self)
 
-        self.init()
-
 
 def entry():
+    print("Running yorick.py..")
+
     # This block will remove intermittent crash
     # Please refer to 3dsMax documentation
     qapp = QApplication.instance()
     if not qapp:
         qapp = QApplication([])
-
-    # initialize
-    app = Biped2Bone()
+    qmainwin = QMainWindow()
 
     try:
-        app.show()
+        global tool
+    except:
+        pass
+
+    # initialize
+    try:
+        tool = Biped2Bone(qmainwin)
+        qmainwin.show()
+        print("Tool initialized")
     except Exception as e:
         print(e)
 

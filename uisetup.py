@@ -19,7 +19,7 @@ All Copyrights Reserved, (C) Maverick Games, 2016
 import sys
 from functools import partial
 
-from PyQt4.QtGui import QTreeWidgetItem
+from PySide2.QtWidgets import QTreeWidgetItem
 
 # packages
 import yorick_service
