@@ -40,8 +40,7 @@ def getui(uiname):
         return None
 
     return uisetup.getui(
-        getattr(thismodule, uiname)
-    )
+        getattr(thismodule, uiname))
 
 
 class __uicompbase(object):
@@ -71,11 +70,13 @@ class JointListView(__uicompbase):
         self.expandall()
 
     def _load(self, DataControl):
-        """ consider as protected member.
-            instead of calling it directly from outside,
-            add 'reload' method to call this.
+        """
+        consider as protected member.
+        instead of calling it directly from outside,
+        add 'reload' method to call this.
 
-            read 'l_BipedList' class for example. """
+        read 'l_BipedList' class for example.
+        """
 
         self._unload()
 
@@ -224,11 +225,11 @@ class __DisableableButton(object):
     enabletext = "ENABLED"
     disabletext = "DISABLED"
 
-    def disable(self):
+    def disable(self, e=None):
         self.widget.setText(self.disabletext)
         self.widget.setEnabled(False)
 
-    def enable(self):
+    def enable(self, e=None):
         self.widget.setText(self.enabletext)
         self.widget.setEnabled(True)
 
@@ -243,7 +244,7 @@ class b_GenBones(__DisableableButton):
 
         self.disable()
 
-    def clicked(self):
+    def clicked(self, e=None):
         bipedlist_comp = getui("l_BipedList")
         bonelist_comp = getui("l_BoneList")
 
@@ -278,7 +279,7 @@ class b_Reload:
     def __init__(self, widget):
         self.widget = widget
 
-    def clicked(self):
+    def clicked(self, e=None):
         print("Reloading scene..")
         getui("l_BipedList").reload()
 
@@ -287,7 +288,7 @@ class b_Unload:
     def __init__(self, widget):
         self.widget = widget
 
-    def clicked(self):
+    def clicked(self, e=None):
         print("Unloading scene..")
         getui("l_BipedList").unload()
 
@@ -296,7 +297,7 @@ class b_Expand:
     def __init__(self, widget):
         self.widget = widget
 
-    def clicked(self):
+    def clicked(self, e=None):
         getui("l_BipedList").expandall()
         getui("l_BoneList").expandall()
 
@@ -305,7 +306,7 @@ class b_Collapse:
     def __init__(self, widget):
         self.widget = widget
 
-    def clicked(self):
+    def clicked(self, e=None):
         getui("l_BipedList").collapseall()
         getui("l_BoneList").collapseall()
 

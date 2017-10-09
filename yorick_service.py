@@ -12,8 +12,6 @@ date: Nov. 2016
 All Copyrights Reserved, (C) Maverick Games, 2016
 """
 
-from functools import partial
-
 # 3dsMax
 import MaxPlus
 
