@@ -22,18 +22,3 @@ python.ExecuteFile "{PATH_TO_YORICK}\yorick.py"
 
 - Sublime Text 를 사용한다면, Sublime3dsMax 패키지를 이용해서 코드를 즉시 실행할 수 있습니다.
 (Sublime3dsMax 패키지는 Package Control을 사용해서 설치할 수 있습니다.)
-
-
-라이센스
----
-
-PyQt4를 사용하고 있습니다. 반드시 GPL 호환 라이센스로 배포해야 합니다.
-http://pyqt.sourceforge.net/Docs/PyQt4/introduction.html#license
-
-
----
-
-Maverick Games
-===
-
-편의를 위해 dependencies 폴더의 설치파일을 사용하되, 외부에 배포할 경우에는 dependencies 폴더는 포함시키지 않습니다.
