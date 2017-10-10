@@ -65,7 +65,6 @@ class JointListView(__uicompbase):
         self.widget.clear()
 
     def _reload(self, DataControl):
-        self._unload()
         self._load(DataControl)
         self.expandall()
 
@@ -79,7 +78,6 @@ class JointListView(__uicompbase):
         """
 
         self._unload()
-
         self.datacontainer = DataControl()
 
         # get node mapping data from service
@@ -110,7 +108,9 @@ class JointListView(__uicompbase):
             return child
 
         # ignite recursion
+        self.item_to_node.clear()
         self.item_to_node[rootitem] = rootnode
+
         rootitem.addChildren(
             list(map(partial(gen_child, rootitem), rootnode.children))
         )

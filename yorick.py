@@ -94,7 +94,11 @@ class UISetup:
             method = getattr(componentdef_instance, slotmethod)
             if not inspect.ismethod(method):
                 return
-            method()
+
+            try:
+                method()
+            except Exception as e:
+                print(e)
 
         for method in dir(componentdef_instance):
 
